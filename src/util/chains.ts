@@ -1,5 +1,9 @@
 import { Currency, Ether, NativeCurrency, Token } from '@uniswap/sdk-core';
 
+import {
+  OBSCURO_NETWORK_WETH_ADDRESS
+} from '../obscuro_constants';
+
 export enum ChainId {
   MAINNET = 1,
   ROPSTEN = 3,
@@ -16,6 +20,7 @@ export enum ChainId {
   CELO_ALFAJORES = 44787,
   GNOSIS = 100,
   MOONBEAM = 1284,
+  GETH_NETWORK = 777
 }
 
 // WIP: Gnosis, Moonbeam
@@ -34,6 +39,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO_ALFAJORES,
   ChainId.CELO,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
+  ChainId.GETH_NETWORK
 ];
 
 export const V2_SUPPORTED = [
@@ -97,6 +103,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.GNOSIS;
     case 1284:
       return ChainId.MOONBEAM;
+    case 777:
+      return ChainId.GETH_NETWORK;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -118,6 +126,7 @@ export enum ChainName {
   CELO_ALFAJORES = 'celo-alfajores',
   GNOSIS = 'gnosis-mainnet',
   MOONBEAM = 'moonbeam-mainnet',
+  GETH_NETWORK = 'geth_network',
 }
 
 export enum NativeCurrencyName {
@@ -235,6 +244,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.GNOSIS;
     case 1284:
       return ChainName.MOONBEAM;
+    case 777:
+      return ChainName.GETH_NETWORK;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -384,6 +395,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WGLMR',
     'Wrapped GLMR'
+  ),
+  [ChainId.GETH_NETWORK]: new Token(
+    ChainId.GETH_NETWORK,
+    OBSCURO_NETWORK_WETH_ADDRESS,
+    18,
+    'WETH',
+    'Wrapped Eth'
   ),
 };
 

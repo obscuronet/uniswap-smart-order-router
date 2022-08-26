@@ -1,6 +1,7 @@
 import { Token } from '@uniswap/sdk-core';
 import _ from 'lodash';
 
+import { OBSCURO_NETWORK_USDC_ADDRESS } from '../obscuro_constants';
 import { IERC20Metadata__factory } from '../types/v3/factories/IERC20Metadata__factory';
 import { ChainId, log, WRAPPED_NATIVE_CURRENCY } from '../util';
 
@@ -508,6 +509,14 @@ export const WBTC_MOONBEAM = new Token(
   8,
   'WBTC',
   'Wrapped BTC bridged using Multichain'
+);
+
+export const USDC_GETH_NETWORK = new Token(
+  ChainId.GETH_NETWORK,
+  OBSCURO_NETWORK_USDC_ADDRESS,
+  6,
+  'USDC',
+  'USD Coin bridged using Multichain'
 );
 
 export class TokenProvider implements ITokenProvider {

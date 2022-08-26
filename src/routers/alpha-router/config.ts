@@ -39,6 +39,7 @@ export const DEFAULT_ROUTING_CONFIG_BY_CHAIN = (
     case ChainId.ARBITRUM_RINKEBY:
     case ChainId.CELO:
     case ChainId.CELO_ALFAJORES:
+    case ChainId.GETH_NETWORK:
       return {
         v2PoolSelection: {
           topN: 3,
