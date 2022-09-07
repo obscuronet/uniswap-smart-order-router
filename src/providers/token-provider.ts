@@ -514,7 +514,7 @@ export const WBTC_MOONBEAM = new Token(
 export const USDC_GETH_NETWORK = new Token(
   ChainId.GETH_NETWORK,
   OBSCURO_NETWORK_USDC_ADDRESS,
-  6,
+  18,
   'USDC',
   'USD Coin bridged using Multichain'
 );

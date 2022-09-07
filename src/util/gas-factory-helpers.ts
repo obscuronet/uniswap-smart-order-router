@@ -53,14 +53,15 @@ export async function getHighestLiquidityV3NativePool(
   token: Token,
   poolProvider: IV3PoolProvider
 ): Promise<Pool | null> {
+  console.log("derpi 1")
   const nativeCurrency = WRAPPED_NATIVE_CURRENCY[token.chainId as ChainId]!;
-
+  console.log("derpi 2")
   const nativePools = _([FeeAmount.HIGH, FeeAmount.MEDIUM, FeeAmount.LOW])
     .map<[Token, Token, FeeAmount]>((feeAmount) => {
       return [nativeCurrency, token, feeAmount];
     })
     .value();
-
+  console.log("derpi 3")
   const poolAccessor = await poolProvider.getPools(nativePools);
 
   const pools = _([FeeAmount.HIGH, FeeAmount.MEDIUM, FeeAmount.LOW])
