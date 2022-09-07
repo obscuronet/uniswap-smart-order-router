@@ -8,7 +8,7 @@ import {
   Ether,
   Percent,
   Token,
-  TradeType,
+  TradeType
 } from '@uniswap/sdk-core';
 import {
   AlphaRouter,
@@ -25,28 +25,28 @@ import {
   ID_TO_NETWORK_NAME,
   ID_TO_PROVIDER,
   MixedRoute,
-  nativeOnChain,
   NATIVE_CURRENCY,
+  nativeOnChain,
   NodeJSCache,
   OnChainQuoteProvider,
   parseAmount,
   SUPPORTED_CHAINS,
-  UniswapMulticallProvider,
   UNI_GÖRLI,
   UNI_MAINNET,
+  UniswapMulticallProvider,
   USDC_ETHEREUM_GNOSIS,
   USDC_MAINNET,
   USDC_ON,
   USDT_MAINNET,
+  V2_SUPPORTED,
   V2PoolProvider,
   V2Route,
-  V2_SUPPORTED,
   V3PoolProvider,
   V3Route,
   WBTC_GNOSIS,
   WBTC_MOONBEAM,
   WETH9,
-  WNATIVE_ON,
+  WNATIVE_ON
 } from '../../../../src';
 import { WHALES } from '../../../test-util/whales';
 
@@ -59,7 +59,7 @@ import {
   encodeSqrtRatioX96,
   FeeAmount,
   MethodParameters,
-  Pool,
+  Pool
 } from '@uniswap/v3-sdk';
 import { BigNumber, providers } from 'ethers';
 import { parseEther } from 'ethers/lib/utils';
@@ -1150,7 +1150,7 @@ describe('alpha router integration', () => {
 
           // Expect tenderly simulation to be successful
           expect(simulationError).toBeUndefined();
-          
+
           await validateExecuteSwap(
             quote,
             tokenIn,
@@ -1458,6 +1458,7 @@ describe('quote for other networks', () => {
     [ChainId.CELO_ALFAJORES]: CUSD_CELO_ALFAJORES,
     [ChainId.GNOSIS]: WBTC_GNOSIS,
     [ChainId.MOONBEAM]: WBTC_MOONBEAM,
+    [ChainId.GETH_NETWORK]: USDC_ON(ChainId.GETH_NETWORK),
   };
   const TEST_ERC20_2: { [chainId in ChainId]: Token } = {
     [ChainId.MAINNET]: DAI_ON(1),
@@ -1475,6 +1476,7 @@ describe('quote for other networks', () => {
     [ChainId.CELO_ALFAJORES]: CEUR_CELO_ALFAJORES,
     [ChainId.GNOSIS]: USDC_ETHEREUM_GNOSIS,
     [ChainId.MOONBEAM]: WBTC_MOONBEAM,
+    [ChainId.GETH_NETWORK]: USDC_ON(ChainId.GETH_NETWORK),
   };
 
   // TODO: Find valid pools/tokens on optimistic kovan and polygon mumbai. We skip those tests for now.
@@ -1514,7 +1516,7 @@ describe('quote for other networks', () => {
           new NodeJSCache(new NodeCache({ stdTTL: 360, useClones: false }))
         );
         const v2PoolProvider = new V2PoolProvider(ChainId.MAINNET, multicall2Provider);
-        
+
         const simulator = new FallbackTenderlySimulator(process.env.TENDERLY_BASE_URL!, process.env.TENDERLY_USER!, process.env.TENDERLY_PROJECT!, process.env.TENDERLY_ACCESS_KEY!, provider, v2PoolProvider, v3PoolProvider)
         alphaRouter = new AlphaRouter({
           chainId: ChainId.MAINNET,
@@ -1708,7 +1710,7 @@ describe('quote for other networks', () => {
               tradeType == TradeType.EXACT_INPUT
                 ? parseAmount('10', tokenIn)
                 : parseAmount('10', tokenOut);
-  
+
             const swap = await alphaRouter.route(
               amount,
               getQuoteToken(tokenIn, tokenOut, tradeType),
@@ -1733,10 +1735,10 @@ describe('quote for other networks', () => {
               // Expect tenderly simulation to be successful
               expect(swap.simulationError).toBeUndefined();
             }
-  
+
             // Scope limited for non mainnet network tests to validating the swap
           });
-  
+
           it(`erc20 -> erc20`, async () => {
             const tokenIn = erc1;
             const tokenOut = erc2;
@@ -1744,7 +1746,7 @@ describe('quote for other networks', () => {
               tradeType == TradeType.EXACT_INPUT
                 ? parseAmount('1', tokenIn)
                 : parseAmount('1', tokenOut);
-  
+
             const swap = await alphaRouter.route(
               amount,
               getQuoteToken(tokenIn, tokenOut, tradeType),
@@ -1770,13 +1772,13 @@ describe('quote for other networks', () => {
               expect(swap.simulationError).toBeUndefined();
             }
           });
-  
+
           const native = NATIVE_CURRENCY[chain];
-  
+
           it(`${native} -> erc20`, async () => {
             const tokenIn = nativeOnChain(chain);
             const tokenOut = erc2;
-  
+
             // Celo currently has low liquidity and will not be able to find route for
             // large input amounts
             // TODO: Simplify this when Celo has more liquidity
@@ -1788,7 +1790,7 @@ describe('quote for other networks', () => {
                 : tradeType == TradeType.EXACT_INPUT
                 ? parseAmount('100', tokenIn)
                 : parseAmount('100', tokenOut);
-  
+
             const swap = await alphaRouter.route(
               amount,
               getQuoteToken(tokenIn, tokenOut, tradeType),

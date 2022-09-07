@@ -703,6 +703,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_ETHEREUM_GNOSIS;
     case ChainId.MOONBEAM:
       return USDC_MOONBEAM;
+    case ChainId.GETH_NETWORK:
+      return USDC_GETH_NETWORK;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

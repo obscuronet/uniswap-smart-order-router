@@ -26,7 +26,7 @@ import {
   UNI_ARBITRUM_RINKEBY,
   USDC_ARBITRUM,
   USDC_ARBITRUM_RINKEBY,
-  USDC_ETHEREUM_GNOSIS,
+  USDC_ETHEREUM_GNOSIS, USDC_GETH_NETWORK,
   USDC_MAINNET,
   USDC_MOONBEAM,
   USDC_OPTIMISM,
@@ -43,7 +43,7 @@ import {
   WBTC_OPTIMISM,
   WBTC_OPTIMISTIC_KOVAN,
   WMATIC_POLYGON,
-  WMATIC_POLYGON_MUMBAI,
+  WMATIC_POLYGON_MUMBAI
 } from './token-provider';
 
 // These tokens will added to the Token cache on initialization.
@@ -125,6 +125,10 @@ export const CACHE_SEED_TOKENS: {
     DAI: DAI_MOONBEAM,
     WBTC: WBTC_MOONBEAM,
     WGLMR: WRAPPED_NATIVE_CURRENCY[ChainId.MOONBEAM],
+  },
+  [ChainId.GETH_NETWORK]: {
+    WETH: WRAPPED_NATIVE_CURRENCY[ChainId.GETH_NETWORK]!,
+    USDC: USDC_GETH_NETWORK,
   },
 
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
