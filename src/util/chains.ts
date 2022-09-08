@@ -401,8 +401,8 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     ChainId.GETH_NETWORK,
     OBSCURO_NETWORK_WETH_ADDRESS,
     18,
-    'WETH',
-    'Wrapped Eth'
+    'WOBX',
+    'Wrapped Obx'
   ),
 };
 
