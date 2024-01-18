@@ -20,7 +20,7 @@ export enum ChainId {
   CELO_ALFAJORES = 44787,
   GNOSIS = 100,
   MOONBEAM = 1284,
-  GETH_NETWORK = 777
+  GETH_NETWORK = 443
 }
 
 // WIP: Gnosis, Moonbeam
@@ -103,7 +103,7 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.GNOSIS;
     case 1284:
       return ChainId.MOONBEAM;
-    case 777:
+    case 443:
       return ChainId.GETH_NETWORK;
     default:
       throw new Error(`Unknown chain id: ${id}`);
@@ -245,7 +245,7 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.GNOSIS;
     case 1284:
       return ChainName.MOONBEAM;
-    case 777:
+    case 443:
       return ChainName.GETH_NETWORK;
     default:
       throw new Error(`Unknown chain id: ${id}`);

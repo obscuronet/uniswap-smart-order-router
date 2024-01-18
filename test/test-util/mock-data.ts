@@ -318,7 +318,7 @@ export const mockTokenList: TokenList = {
       address: '0x577D296678535e4903D59A4C929B718e1D575e0A',
       symbol: 'WBTC',
       decimals: 18,
-      chainId: 777,
+      chainId: 443,
       logoURI: '',
     },
   ],

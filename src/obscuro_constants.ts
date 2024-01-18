@@ -17,4 +17,4 @@ export const OBSCURO_NETWORK_USDC_ADDRESS = erc20state.USDCAddress
 
 export const OBSCURO_NETWORK_URL = 'http://127.0.0.1:3001'
 
-export const OBSCURO_NETWORK_CHAIN_ID = 777
+export const OBSCURO_NETWORK_CHAIN_ID = 443
