@@ -1,8 +1,8 @@
 import { Currency, Ether, NativeCurrency, Token } from '@uniswap/sdk-core';
 
 import {
-  OBSCURO_NETWORK_WETH_ADDRESS
-} from '../obscuro_constants';
+  TEN_NETWORK_WETH_ADDRESS
+} from '../ten_constants';
 
 export enum ChainId {
   MAINNET = 1,
@@ -399,10 +399,10 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
   ),
   [ChainId.GETH_NETWORK]: new Token(
     ChainId.GETH_NETWORK,
-    OBSCURO_NETWORK_WETH_ADDRESS,
+    TEN_NETWORK_WETH_ADDRESS,
     18,
-    'WOBX',
-    'Wrapped Obx'
+    'ETH',
+    'Ether'
   ),
 };
 
